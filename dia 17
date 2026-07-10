@@ -1,0 +1,128 @@
+# Lista com as perguntas e respostas do quiz
+dados_perguntas = [
+    {
+        "pergunta": "O padrão HTML5 foi publicado em 2014.",
+        "resposta": "verdadeiro"
+    },
+    {
+        "pergunta": "O primeiro bug de computador aconteceu por causa de fios com defeito.",
+        "resposta": "falso"
+    },
+    {
+        "pergunta": "FLAC significa Free Lossless Audio Condenser.",
+        "resposta": "falso"
+    },
+    {
+        "pergunta": "Todos os códigos precisam ser compilados em um arquivo executável.",
+        "resposta": "falso"
+    },
+    {
+        "pergunta": "Linus Torvalds criou o Linux e o Git.",
+        "resposta": "verdadeiro"
+    },
+    {
+        "pergunta": "A linguagem Python foi baseada em uma versão modificada do JavaScript.",
+        "resposta": "falso"
+    },
+    {
+        "pergunta": "A AMD criou o primeiro processador de 64 bits para consumidores.",
+        "resposta": "verdadeiro"
+    },
+    {
+        "pergunta": "HTML significa Hypertext Markup Language.",
+        "resposta": "verdadeiro"
+    },
+    {
+        "pergunta": "Na maioria das linguagens, o operador ++ equivale a += 1.",
+        "resposta": "verdadeiro"
+    },
+    {
+        "pergunta": "O IBM PC usava um processador Intel 8008 de 4,77 MHz.",
+        "resposta": "falso"
+    }
+]
+
+
+# Classe para guardar cada pergunta
+class Pergunta:
+
+    def __init__(self, texto, resposta):
+        self.texto = texto
+        self.resposta = resposta
+
+
+# Classe que controla o funcionamento do quiz
+class Quiz:
+
+    def __init__(self, lista_perguntas):
+        self.numero_pergunta = 0
+        self.pontuacao = 0
+        self.lista_perguntas = lista_perguntas
+
+    # Verifica se ainda existem perguntas
+    def ainda_tem_perguntas(self):
+        return self.numero_pergunta < len(self.lista_perguntas)
+
+    # Mostra a próxima pergunta
+    def proxima_pergunta(self):
+        pergunta_atual = self.lista_perguntas[self.numero_pergunta]
+
+        self.numero_pergunta += 1
+
+        resposta_usuario = input(
+            f"\nPergunta {self.numero_pergunta}: "
+            f"{pergunta_atual.texto} "
+            "(verdadeiro/falso): "
+        ).lower()
+
+        self.verificar_resposta(
+            resposta_usuario,
+            pergunta_atual.resposta
+        )
+
+    # Verifica se a resposta está correta
+    def verificar_resposta(self, resposta_usuario, resposta_correta):
+
+        if resposta_usuario == resposta_correta:
+            self.pontuacao += 1
+            print("Você acertou!")
+
+        else:
+            print("Você errou!")
+
+        print(f"A resposta correta era: {resposta_correta}.")
+        print(
+            f"Sua pontuação atual é: "
+            f"{self.pontuacao}/{self.numero_pergunta}"
+        )
+
+
+# Lista que vai guardar os objetos das perguntas
+banco_perguntas = []
+
+# Transforma os dicionários em objetos da classe Pergunta
+for pergunta in dados_perguntas:
+
+    texto = pergunta["pergunta"]
+    resposta = pergunta["resposta"]
+
+    nova_pergunta = Pergunta(texto, resposta)
+
+    banco_perguntas.append(nova_pergunta)
+
+
+# Inicia o quiz
+quiz = Quiz(banco_perguntas)
+
+print("Bem-vindo ao quiz de computação!")
+
+while quiz.ainda_tem_perguntas():
+    quiz.proxima_pergunta()
+
+
+# Mostra o resultado final
+print("\nVocê terminou o quiz!")
+print(
+    f"Sua pontuação final foi: "
+    f"{quiz.pontuacao}/{quiz.numero_pergunta}"
+)
