@@ -1,0 +1,41 @@
+/* Define o tamanho de todas as imagens */
+img {
+    height: 200px;
+    width: 200px;
+}
+
+
+/* Deixa os títulos das cores sem negrito */
+.titulo-cor {
+    font-weight: normal;
+}
+
+
+/* Cor vermelha */
+#vermelho {
+    color: red;
+}
+
+
+/* Cor azul */
+#azul {
+    color: blue;
+}
+
+
+/* Cor laranja */
+#laranja {
+    color: orange;
+}
+
+
+/* Cor verde */
+#verde {
+    color: green;
+}
+
+
+/* Cor amarela */
+#amarelo {
+    color: yellow;
+}
