@@ -1,0 +1,39 @@
+/* Configura toda a página */
+body {
+    margin: 0;
+    background-color: black;
+}
+
+
+/* Área que contém a imagem e os textos */
+.poster {
+    width: 50%;
+    margin-left: 25%;
+    margin-top: 100px;
+
+    color: white;
+    text-align: center;
+
+    font-family: "Libre Baskerville", serif;
+}
+
+
+/* Título principal */
+h1 {
+    font-size: 3rem;
+    text-transform: uppercase;
+}
+
+
+/* Imagem principal */
+.imagem-motivacional {
+    width: 100%;
+    border: 5px solid white;
+    box-sizing: border-box;
+}
+
+
+/* Texto abaixo do título */
+p {
+    font-size: 1rem;
+}
